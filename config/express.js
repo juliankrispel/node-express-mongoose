@@ -98,6 +98,22 @@ module.exports = function (app, passport) {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  /*
+   * Check if there's a valid user session otherwise redirect to login
+   */
+  app.use(function(req, res, next) {
+    if (!req.user) {
+      passport.authenticate(
+        'google', {
+          scope: config.google.scope,
+          successRedirect: '/',
+}
+      )(req, res, next);
+    } else {
+      next();
+    }
+  });
+
   // connect flash for flash messages - should be declared after sessions
   app.use(flash());
 

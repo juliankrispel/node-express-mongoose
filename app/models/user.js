@@ -4,7 +4,7 @@
  */
 
 var mongoose = require('mongoose');
-var userPlugin = require('mongoose-user');
+var findOrCreate = require('mongoose-findorcreate');
 var Schema = mongoose.Schema;
 
 /**
@@ -14,15 +14,14 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
   name: { type: String, default: '' },
   email: { type: String, default: '' },
-  hashed_password: { type: String, default: '' },
-  salt: { type: String, default: '' }
+  googleId: { type: Number },
 });
 
 /**
  * User plugin
  */
 
-UserSchema.plugin(userPlugin, {});
+UserSchema.plugin(findOrCreate);
 
 /**
  * Add your

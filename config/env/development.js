@@ -8,7 +8,7 @@ module.exports = {
   facebook: {
     clientID: 'APP_ID',
     clientSecret: 'SECRET',
-    callbackURL: 'http://localhost:3000/auth/facebook/callback',
+    callbackURL: 'http://localhost:3000/',
     scope: [
       'email',
       'user_about_me',
@@ -16,13 +16,14 @@ module.exports = {
     ]
   },
   google: {
-    clientID: 'APP_ID',
-    clientSecret: 'SECRET',
-    callbackURL: 'http://localhost:3000/auth/google/callback',
+    clientID: process.env.GOOGLE_APP_ID,
+    clientSecret: process.env.GOOGLE_APP_SECRET,
+    callbackURL: 'http://localhost:3000/',
     scope: [
       'https://www.googleapis.com/auth/userinfo.profile',
       'https://www.googleapis.com/auth/userinfo.email',
       'https://www.google.com/m8/feeds',
-    ]
+      'https://www.googleapis.com/auth/calendar',
+    ],
   }
 };

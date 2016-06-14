@@ -5,14 +5,17 @@
  */
 
 const home = require('../app/controllers/home');
-
 /**
  * Expose
  */
 
 module.exports = function (app, passport) {
-
   app.get('/', home.index);
+
+  app.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+  });
 
   /**
    * Error handling
